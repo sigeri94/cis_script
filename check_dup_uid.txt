@@ -1,0 +1,5 @@
+echo "IyEvYmluL2Jhc2ggCgpjdXQgLWYzIC1kIjoiIC9ldGMvcGFzc3dkIHwgc29ydCAtbiB8IHVuaXEgLWMgfCB3aGlsZSByZWFkIHggOyBkbyAKWyAteiAiJHgiIF0gJiYgYnJlYWsgCnNldCAtICR4CmlmIFsgJDEgLWd0IDEgXTsgdGhlbiAKdXNlcnM9JChhd2sgLUY6ICcoJDMgPT0gbikgeyBwcmludCAkMSB9JyBuPSQyIC9ldGMvcGFzc3dkIHwgeGFyZ3MpIAplY2hvICJEdXBsaWNhdGUgVUlEICgkMik6ICR1c2VycyIgCmZpIApkb25lCg=="| base64 -d | bash
+
+  --]  output
+Duplicate UID (1001): user1 user2 user3
+
