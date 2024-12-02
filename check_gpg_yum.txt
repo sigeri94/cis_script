@@ -1,0 +1,12 @@
+echo "IyEvdXNyL2Jpbi9lbnYgYmFzaAoKZWNobyAiUmVwb3NpdG9yeSBHUEcgYW5kIEVuYWJsZWQgU3RhdHVzOiIKZWNobyAiLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSIKCmZpbmQgL2V0Yy95dW0ucmVwb3MuZC8gLXR5cGUgZiAtbmFtZSAiKi5yZXBvIiB8IHdoaWxlIHJlYWQgLXIgcmVwb19maWxlOyBkbwogICAgYXdrICcKICAgIC9eXFsuKlxdLyB7IHJlcG89JDAgfQogICAgL15ccyplbmFibGVkXHMqPVxzKjEvIHsgZW5hYmxlZD0xIH0KICAgIC9eXHMqZ3BnY2hlY2tccyo9XHMqMS8geyBncGdjaGVjaz0xIH0KICAgIHsgaWYgKHJlcG8gJiYgZW5hYmxlZCA9PSAxKSB7CiAgICAgICAgaWYgKGdwZ2NoZWNrID09IDEpCiAgICAgICAgICAgIHByaW50ICJSZXBvc2l0b3J5OiAiIHJlcG8gIlxuICBFbmFibGVkOiBZZXNcbiAgR1BHIENoZWNrOiBZZXNcbiIKICAgICAgICBlbHNlCiAgICAgICAgICAgIHByaW50ICJSZXBvc2l0b3J5OiAiIHJlcG8gIlxuICBFbmFibGVkOiBZZXNcbiAgR1BHIENoZWNrOiBOb1xuIgogICAgICAgIHJlcG89IiI7IGVuYWJsZWQ9MDsgZ3BnY2hlY2s9MDsKICAgIH19CiAgICBFTkQgeyBpZiAocmVwbyAmJiBlbmFibGVkID09IDEpIHsKICAgICAgICBwcmludCAiUmVwb3NpdG9yeTogIiByZXBvICJcbiAgRW5hYmxlZDogWWVzXG4gIEdQRyBDaGVjazogVW5rbm93blxuIgogICAgfX0KICAgICcgIiRyZXBvX2ZpbGUiCmRvbmUK"| base64 -d | bash
+
+  --] output
+Repository GPG and Enabled Status:
+----------------------------------
+Repository: [rhel-9-for-x86_64-appstream-rpms]
+  Enabled: Yes
+  GPG Check: Yes
+
+Repository: [rhel-9-for-x86_64-baseos-rpms]
+  Enabled: Yes
+  GPG Check: Yes
