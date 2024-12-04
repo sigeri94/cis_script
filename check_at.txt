@@ -1,0 +1,34 @@
+echo "IyEvdXNyL2Jpbi9lbnYgYmFzaAoKewogICAgbF9vdXRwdXQ9IiIgICAjIFN0b3JlcyBjb25maWd1cmF0aW9ucyB0aGF0IHBhc3MKICAgIGxfb3V0cHV0Mj0iIiAgIyBTdG9yZXMgY29uZmlndXJhdGlvbnMgdGhhdCBmYWlsCgogICAgZWNobyAiQXVkaXRpbmcgJ2F0JyBjb21tYW5kIGFjY2VzcyBjb250cm9sIGNvbmZpZ3VyYXRpb24uLi4iCiAgICBlY2hvICItLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSIKCiAgICAjIENoZWNrIGlmICdhdCcgaXMgaW5zdGFsbGVkCiAgICBpZiBjb21tYW5kIC12IGF0ID4vZGV2L251bGwgMj4mMTsgdGhlbgogICAgICAgICMgQ2hlY2sgaWYgL2V0Yy9hdC5hbGxvdyBleGlzdHMKICAgICAgICBpZiBbIC1mIC9ldGMvYXQuYWxsb3cgXTsgdGhlbgogICAgICAgICAgICBpZiBbIC1zIC9ldGMvYXQuYWxsb3cgXTsgdGhlbgogICAgICAgICAgICAgICAgbF9vdXRwdXQrPSJcbi0gL2V0Yy9hdC5hbGxvdyBleGlzdHMgYW5kIGlzIHByb3Blcmx5IGNvbmZpZ3VyZWQuXG4gIE9ubHkgdXNlcnMgbGlzdGVkIGluIC9ldGMvYXQuYWxsb3cgY2FuIHVzZSAnYXQnLiIKICAgICAgICAgICAgZWxzZQogICAgICAgICAgICAgICAgbF9vdXRwdXQyKz0iXG4tIC9ldGMvYXQuYWxsb3cgZXhpc3RzIGJ1dCBpcyBlbXB0eS5cbiAgVGhpcyBtYXkgYWxsb3cgdW5pbnRlbmRlZCB1c2VycyB0byBhY2Nlc3MgJ2F0Jy4iCiAgICAgICAgICAgIGZpCiAgICAgICAgZWxzZQogICAgICAgICAgICAjIENoZWNrIGlmIC9ldGMvYXQuZGVueSBleGlzdHMKICAgICAgICAgICAgaWYgWyAtZiAvZXRjL2F0LmRlbnkgXTsgdGhlbgogICAgICAgICAgICAgICAgbF9vdXRwdXQyKz0iXG4tIC9ldGMvYXQuYWxsb3cgZG9lcyBub3QgZXhpc3QuXG4gIEFjY2VzcyB0byAnYXQnIGlzIGNvbnRyb2xsZWQgYnkgL2V0Yy9hdC5kZW55LCB3aGljaCBtYXkgYWxsb3cgdW5pbnRlbmRlZCBhY2Nlc3MuIgogICAgICAgICAgICBlbHNlCiAgICAgICAgICAgICAgICBsX291dHB1dDIrPSJcbi0gTmVpdGhlciAvZXRjL2F0LmFsbG93IG5vciAvZXRjL2F0LmRlbnkgZXhpc3RzLlxuICBUaGlzIG1lYW5zIGFsbCB1c2VycyBhcmUgYWxsb3dlZCB0byB1c2UgJ2F0Jywgd2hpY2ggbWF5IGJlIGEgc2VjdXJpdHkgcmlzay4iCiAgICAgICAgICAgIGZpCiAgICAgICAgZmkKICAgIGVsc2UKICAgICAgICBsX291dHB1dDIrPSJcbi0gJ2F0JyBpcyBub3QgaW5zdGFsbGVkIG9uIHRoZSBzeXN0ZW0uIE5vIGFjdGlvbiByZXF1aXJlZC4iCiAgICBmaQoKICAgICMgUHJpbnQgYXVkaXQgcmVzdWx0cwogICAgaWYgWyAteiAiJGxfb3V0cHV0MiIgXTsgdGhlbgogICAgICAgIGVjaG8gLWUgIlxuLSBBdWRpdCBSZXN1bHQ6XG4gKiogUEFTUyAqKlxuJGxfb3V0cHV0XG4iCiAgICBlbHNlCiAgICAgICAgZWNobyAtZSAiXG4tIEF1ZGl0IFJlc3VsdDpcbiAqKiBGQUlMICoqXG4gLSBSZWFzb24ocykgZm9yIGF1ZGl0IGZhaWx1cmU6XG4kbF9vdXRwdXQyXG4iCiAgICAgICAgWyAtbiAiJGxfb3V0cHV0IiBdICYmIGVjaG8gLWUgIlxuLSBDb3JyZWN0bHkgc2V0OlxuJGxfb3V0cHV0XG4iCiAgICBmaQp9Cg==" | base64 -d |bash
+
+  
+--- ] output1
+Auditing 'at' command access control configuration...
+-----------------------------------------------------
+
+- Audit Result:
+ ** FAIL **
+ - Reason(s) for audit failure:
+
+- /etc/at.allow does not exist.
+  Access to 'at' is controlled by /etc/at.deny, which may allow unintended access.
+
+Auditing 'at' command access control configuration...
+-----------------------------------------------------
+
+--- ] output2
+- Audit Result:
+ ** FAIL **
+ - Reason(s) for audit failure:
+
+- /etc/at.allow exists but is empty.
+  This may allow unintended users to access 'at'.
+
+--- ] output3
+Auditing 'at' command access control configuration...
+-----------------------------------------------------
+
+- Audit Result:
+ ** PASS **
+
+- /etc/at.allow exists and is properly configured.
+  Only users listed in /etc/at.allow can use 'at'.
