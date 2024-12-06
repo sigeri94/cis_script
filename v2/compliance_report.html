@@ -1,0 +1,105 @@
+
+        <html>
+        <head>
+            <title>Compliance Report</title>
+            <style>
+                table { border-collapse: collapse; width: 100%; }
+                th, td { border: 1px solid black; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; }
+                .scrollable { max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 5px; }
+                .pass { color: green; font-weight: bold; }
+                .fail { color: red; font-weight: bold; }
+            </style>
+        </head>
+        <body>
+        <h1>Host Information</h1><table><tr><th>Property</th><th>Value</th></tr><tr><td>CheckedHost</td><td>rhel8</td></tr><tr><td>OS</td><td>Linux rhel8 4.18.0-553.el8_10.x86_64 #1 SMP Fri May 10 15:19:13 EDT 2024 x86_64 x86_64 x86_64 GNU/Linux</td></tr><tr><td>ExportDate</td><td>Thu Dec  5 17:19:06 WIB 2024</td></tr><tr><td>CurrentUser</td><td>root</td></tr><tr><td>SudoUsed</td><td>Yes</td></tr></table><br><h1>Compliance Results</h1>
+        <table>
+            <tr>
+                <th>Control ID</th>
+                <th>Domain</th>
+                <th>Description</th>
+                <th>Running Command</th>
+                <th>Output Result</th>
+                <th>PASS/FAIL</th>
+                <th>Mandatory/Secondary</th>
+                <th>Recommendation</th>
+            </tr>
+        <tr><td width=5%>MBSS-OS-RHEL8-010</td><td width=5%>System Security</td><td width=15%>Ensure permissions on bootloader config are configured</td><td><div class='scrollable'><pre>#!/usr/bin/env bash
+
+{
+    l_output=""  # To store success messages
+    l_output2="" # To store failure messages
+
+    # Function to check file mode, user, and group
+    file_mug_chk() {
+        l_out=""  # Local variable for success details
+        l_out2="" # Local variable for failure details
+
+        # Determine permission mask based on file location
+        if [[ "$(dirname "$l_file")" =~ ^/boot/efi/EFI ]]; then
+            l_pmask="0077"
+        else
+            l_pmask="0177"
+        fi
+
+        # Calculate maximum allowed permissions
+        l_maxperm="$(printf '%o' $((0777 & ~$l_pmask)))"
+
+        # Check file mode
+        if [ $((l_mode & l_pmask)) -gt 0 ]; then
+            l_out2="$l_out2\n  - Is mode \"$l_mode\" and should be mode \"$l_maxperm\" or more restrictive"
+        else
+            l_out="$l_out\n  - Is correctly mode: \"$l_mode\" which is mode \"$l_maxperm\" or more restrictive"
+        fi
+
+        # Check file ownership
+        if [ "$l_user" = "root" ]; then
+            l_out="$l_out\n  - Is correctly owned by user: \"$l_user\""
+        else
+            l_out2="$l_out2\n  - Is owned by user: \"$l_user\" and should be owned by user: \"root\""
+        fi
+
+        # Check file group ownership
+        if [ "$l_group" = "root" ]; then
+            l_out="$l_out\n  - Is correctly group-owned by group: \"$l_group\""
+        else
+            l_out2="$l_out2\n  - Is group-owned by group: \"$l_group\" and should be group-owned by group: \"root\""
+        fi
+
+        # Append results to global variables
+        [ -n "$l_out" ] && l_output="$l_output\n - File: \"$l_file\"$l_out\n"
+        [ -n "$l_out2" ] && l_output2="$l_output2\n - File: \"$l_file\"$l_out2\n"
+    }
+
+    # Find and process relevant files in /boot
+    while IFS= read -r -d $'\0' l_gfile; do
+        while read -r l_file l_mode l_user l_group; do
+            file_mug_chk
+        done <<< "$(stat -Lc '%n %#a %U %G' "$l_gfile")"
+    done < <(find /boot -type f \( -name 'grub*' -o -name 'user.cfg' \) -print0)
+
+    # Display results
+    if [ -z "$l_output2" ]; then
+        echo -e "\n- Audit Result:\n *** PASS ***\n- * Correctly set *:\n$l_output\n"
+    else
+        echo -e "\n- Audit Result:\n ** FAIL **\n - * Reasons for audit failure *:\n$l_output2\n"
+        [ -n "$l_output" ] && echo -e " - * Correctly set *:\n$l_output\n"
+    fi
+}
+</pre></div></td><td><div class='scrollable'><pre>- Audit Result:
+ *** PASS ***
+- * Correctly set *:
+
+ - File: "/boot/grub2/grubenv"
+  - Is correctly mode: "0600" which is mode "600" or more restrictive
+  - Is correctly owned by user: "root"
+  - Is correctly group-owned by group: "root"
+
+ - File: "/boot/grub2/grub.cfg"
+  - Is correctly mode: "0600" which is mode "600" or more restrictive
+  - Is correctly owned by user: "root"
+  - Is correctly group-owned by group: "root"
+</pre></div></td><td width=5% class='pass'>PASS</td><td width=5%>Mandatory</td><td width=30%>Already PASS no recommendation needed</td></tr><tr><td width=5%>MBSS-OS-RHEL8-015</td><td width=5%>System Security</td><td width=15%>Ensure message of the day is configured properly</td><td><div class='scrollable'><pre>Error decoding base64: argument should be a bytes-like object or ASCII string, not 'NoneType'</pre></div></td><td><div class='scrollable'><pre>Ubuntu 22.04.5 LTS \n \l
+
+</pre></div></td><td width=5% class='pass'>PASS</td><td width=5%>Mandatory</td><td width=30%>Already PASS no recommendation needed</td></tr></table></body></html>

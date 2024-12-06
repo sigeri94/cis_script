@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComplianceCheck>
+  <HostInfo>
+    <CheckedHost>rhel8</CheckedHost>
+    <OS>Linux rhel8 4.18.0-553.el8_10.x86_64 #1 SMP Fri May 10 15:19:13 EDT 2024 x86_64 x86_64 x86_64 GNU/Linux</OS>
+    <ExportDate>Thu Dec  5 17:19:06 WIB 2024</ExportDate>
+    <CurrentUser>root</CurrentUser>
+    <SudoUsed>Yes</SudoUsed>
+  </HostInfo>
+  <Dump>
+    <ControlID>MBSS-OS-RHEL8-010</ControlID>
+    <Content encoding="base64">LSBBdWRpdCBSZXN1bHQ6CiAqKiogUEFTUyAqKioKLSAqIENvcnJlY3RseSBzZXQgKjoKCiAtIEZpbGU6ICIvYm9vdC9ncnViMi9ncnViZW52IgogIC0gSXMgY29ycmVjdGx5IG1vZGU6ICIwNjAwIiB3aGljaCBpcyBtb2RlICI2MDAiIG9yIG1vcmUgcmVzdHJpY3RpdmUKICAtIElzIGNvcnJlY3RseSBvd25lZCBieSB1c2VyOiAicm9vdCIKICAtIElzIGNvcnJlY3RseSBncm91cC1vd25lZCBieSBncm91cDogInJvb3QiCgogLSBGaWxlOiAiL2Jvb3QvZ3J1YjIvZ3J1Yi5jZmciCiAgLSBJcyBjb3JyZWN0bHkgbW9kZTogIjA2MDAiIHdoaWNoIGlzIG1vZGUgIjYwMCIgb3IgbW9yZSByZXN0cmljdGl2ZQogIC0gSXMgY29ycmVjdGx5IG93bmVkIGJ5IHVzZXI6ICJyb290IgogIC0gSXMgY29ycmVjdGx5IGdyb3VwLW93bmVkIGJ5IGdyb3VwOiAicm9vdCIK</Content>
+  </Dump>
+  <Dump>
+    <ControlID>MBSS-OS-RHEL8-015</ControlID>
+    <Content encoding="base64">VWJ1bnR1IDIyLjA0LjUgTFRTIFxuIFxsCgo=</Content>
+  </Dump>
+</ComplianceCheck>
