@@ -1,0 +1,64 @@
+--- MainWindow.cpp	2024-12-08 09:28:26.805748942 +0700
++++ ../src/MainWindow.cpp	2020-01-15 20:49:27.000000000 +0700
+@@ -409,7 +409,7 @@
+ 
+         // Refill mFSWatch after opening file
+         mFSWatch->removePaths(mFSWatch->files());
+-        for (const QString& path : mScanningSession->getOriginalClosure())
++        for (const QString path : mScanningSession->getOriginalClosure())
+         {
+             mFSWatch->addPath(path);
+         }
+--- OscapCapabilities.cpp	2024-12-08 09:29:17.180603214 +0700
++++ ../src/OscapCapabilities.cpp	2020-01-15 15:12:53.000000000 +0700
+@@ -86,7 +86,7 @@
+     if (lines.size() < 1)
+         return; // TODO: Throw exception?
+ 
+-    const QStringList firstLine = lines[0].split(' ', Qt::SkipEmptyParts);
++    const QStringList firstLine = lines[0].split(' ', QString::SkipEmptyParts);
+     const QString& versionCandidate = firstLine.last();
+ 
+     if (!versionCandidate.contains(QRegExp("^([0-9]+\\.){2,}[0-9]+$")))
+--- RPMOpenHelper.cpp	2024-12-08 09:29:38.469847322 +0700
++++ ../src/RPMOpenHelper.cpp	2020-01-15 15:12:53.000000000 +0700
+@@ -54,7 +54,7 @@
+         static QRegExp tailoringRE("^\\.\\/usr\\/share\\/xml\\/scap\\/[^\\/]+\\/tailoring-xccdf\\.xml+$");
+         static QRegExp inputRE("^\\.\\/usr\\/share\\/xml\\/scap\\/[^\\/]+\\/[^\\/]+\\-(xccdf|ds)\\.xml+$");
+ 
+-        QStringList lines = proc.getStdErrContents().split('\n', Qt::SkipEmptyParts);
++        QStringList lines = proc.getStdErrContents().split('\n', QString::SkipEmptyParts);
+         for (QStringList::const_iterator it = lines.constBegin(); it != lines.constEnd(); ++it)
+         {
+             const QString& line = *it;
+--- SaveAsRPMDialog.cpp	2024-12-08 09:29:59.230899083 +0700
++++ ../src/SaveAsRPMDialog.cpp	2020-01-15 15:12:53.000000000 +0700
+@@ -86,7 +86,7 @@
+     closure.remove(mScanningSession->getOpenedFilePath());
+     QList<QString> closureOrdered;
+     closureOrdered.append(mScanningSession->getOpenedFilePath());
+-    closureOrdered.append(closure.values());
++    closureOrdered.append(closure.toList());
+ 
+     const QDir cwd = ScanningSession::getCommonAncestorDirectory(closure);
+ 
+--- TailoringWindow.cpp	2024-12-08 09:30:21.322809762 +0700
++++ ../src/TailoringWindow.cpp	2020-01-15 20:49:27.000000000 +0700
+@@ -645,7 +645,7 @@
+ void TailoringWindow::deserializeCollapsedItems()
+ {
+     const QStringList list = mQSettings->value(getQSettingsKey()).toStringList();
+-    mCollapsedItemIds = QSet<QString>(list.begin(), list.end());
++    mCollapsedItemIds = QSet<QString>::fromList(list);
+ }
+ 
+ void TailoringWindow::serializeCollapsedItems()
+@@ -657,7 +657,7 @@
+     }
+     else
+     {
+-        mQSettings->setValue(getQSettingsKey(), QVariant(mCollapsedItemIds.values()));
++        mQSettings->setValue(getQSettingsKey(), QVariant(mCollapsedItemIds.toList()));
+         mQSettings->setValue(getQSettingsKey() + "_lastUsed", QVariant(QDateTime::currentDateTime()));
+     }
+ }
